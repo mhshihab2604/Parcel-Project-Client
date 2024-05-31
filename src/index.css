@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+body {
+    font-family: "Playfair Display", serif;
+}
+.userDropDown {
+    position: absolute;
+    z-index: 9999;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 5px 5px #00264214;
+    top: 53px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 0px;
+    overflow: hidden;
+    transition: 0.3s;
+    width: auto;
+    padding: 0px;
+}
+
+.showDropdown {
+    height: auto !important;
+    padding: 50px !important;
+    transition: 0.3s;
+}
+.userDropDown a:hover {
+    background-color: #c0c0c047;
+}
