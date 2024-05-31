@@ -7,6 +7,8 @@ import {FaEyeSlash} from "react-icons/fa";
 import {Helmet} from 'react-helmet';
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import registerAnimation from "./register.json"
+import Lottie from "lottie-react";
 const Register = () => {
 
     const {createUser, UpdateUserProfile, refetchUser, setRefetchUser} = useAuth();
@@ -50,84 +52,89 @@ const Register = () => {
         }
 
     return (
-        <div className="mx-2">
+        <div className="mx-2 mt-20">
             <Helmet>
                 <title>Register</title>
             </Helmet>
-            <div
-                className="w-full max-w-md p-8 space-y-5 border-2 rounded-xl  dark:text-black mx-auto mt-20">
-                <h1 className="text-3xl dark:text-gray-600 font-bold text-center">Register Now</h1>
-                <form
-                    onSubmit={handleSubmit(onSubmit)}
-                    noValidate=""
-                    action=""
-                    className="space-y-6 pt-5">
-                    <div className="flex justify-center items-center gap-5 ">
-                        <div className="space-y-1 text-sm">
-                            <input
-                                type="text"
-                                name="name"
-                                id="username"
-                                placeholder="Name"
-                                className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-                                {...register("name", { required: true })}/> {errors.name && <span className="text-red-500">This field is required</span>}
+            <div className="flex lg:flex-row flex-col justify-center items-center gap-10">
+                <div>
+                    <Lottie className="lg:w-[600px] w-80 mx-auto" animationData={registerAnimation} loop={true} />
+                </div>
+                <div
+                    className="w-full max-w-md p-8 space-y-5 border-2 rounded-xl  dark:text-black">
+                    <h1 className="text-3xl dark:text-gray-600 font-bold text-center">Register Now</h1>
+                    <form
+                        onSubmit={handleSubmit(onSubmit)}
+                        noValidate=""
+                        action=""
+                        className="space-y-6 pt-5">
+                        <div className="flex justify-center items-center gap-5 ">
+                            <div className="space-y-1 text-sm">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="username"
+                                    placeholder="Name"
+                                    className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                                    {...register("name", { required: true })}/> {errors.name && <span className="text-red-500">This field is required</span>}
+                            </div>
+                            <div className="space-y-1 text-sm">
+                                <input
+                                    type="text"
+                                    name="image"
+                                    id="username"
+                                    placeholder="Image URL"
+                                    className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                                    {...register("image", { required: true })}/>
+                            </div>
                         </div>
                         <div className="space-y-1 text-sm">
                             <input
                                 type="text"
-                                name="image"
+                                name="email"
                                 id="username"
-                                placeholder="Image URL"
+                                placeholder="Email"
                                 className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-                                {...register("image", { required: true })}/>
+                                {...register("email", { required: true })}/> {errors.email && <span className="text-red-500">This field is required</span>}
                         </div>
-                    </div>
-                    <div className="space-y-1 text-sm">
-                        <input
-                            type="text"
-                            name="email"
-                            id="username"
-                            placeholder="Email"
-                            className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-                            {...register("email", { required: true })}/> {errors.email && <span className="text-red-500">This field is required</span>}
-                    </div>
-                    <div className="relative space-y-1 text-sm">
-                        <input
-                            type={showPassword
-                                ? "text"
-                                : "password"}
-                            name="password"
-                            id="password"
-                            placeholder="Password"
-                            className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-                            {...register("password", { required: true })}/>
-                        <span
-                            className="absolute top-3 right-1"
-                            onClick={() => setShowPassword(!showPassword)}>
-                            {
+                        <div className="relative space-y-1 text-sm">
+                            <input
+                                type={showPassword
+                                    ? "text"
+                                    : "password"}
+                                name="password"
+                                id="password"
+                                placeholder="Password"
+                                className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                                {...register("password", { required: true })}/>
+                            <span
+                                className="absolute top-3 right-1"
+                                onClick={() => setShowPassword(!showPassword)}>
+                                {
 
-                                showPassword
-                                    ? <FaEyeSlash></FaEyeSlash>
-                                    : <FaEye></FaEye>
-                            }
-                        </span>
-                        {errors.password && <span className="text-red-500">This field is required</span>}
-                        <div className="flex justify-end text-xs dark:text-gray-600">
-                            <a rel="noopener noreferrer" href="#">Forgot Password?</a>
+                                    showPassword
+                                        ? <FaEyeSlash></FaEyeSlash>
+                                        : <FaEye></FaEye>
+                                }
+                            </span>
+                            {errors.password && <span className="text-red-500">This field is required</span>}
+                            <div className="flex justify-end text-xs dark:text-gray-600">
+                                <a rel="noopener noreferrer" href="#">Forgot Password?</a>
+                            </div>
                         </div>
-                    </div>
-                    <button
-                        className="block w-full p-3 text-center rounded-sm dark:text-gray-50 bg-gradient-to-r from-[#21b75f] to-[#31386e] font-semibold border-2">Register</button>
-                </form>
-                {registerError && <p className="text-red-500 font-medium">{registerError}</p>}
+                        <button
+                            className="block w-full p-3 text-center rounded-sm dark:text-gray-50 bg-[#3A3C3F] font-semibold border-2">Register</button>
+                    </form>
+                    {registerError && <p className="text-red-500 font-medium">{registerError}</p>}
 
-                <SocialLogin></SocialLogin>
+                    <SocialLogin></SocialLogin>
 
-                <p className="text-xs text-center sm:px-6 dark:text-gray-600">Don you have an account?
-                    <Link to="/login">
-                        <a rel="noopener noreferrer" href="#" className="underline dark:text-gray-800">Login</a>
-                    </Link>
-                </p>
+                    <p className="text-xs text-center sm:px-6 dark:text-gray-600">Don you have an account?
+                        <Link to="/login">
+                            <a rel="noopener noreferrer" href="#" className="underline dark:text-gray-800">Login</a>
+                        </Link>
+                    </p>
+                </div>
             </div>
         </div>
     );

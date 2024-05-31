@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet";
+import Banner from "../Banner/Banner";
+
 import SimpleMap from "../SimpleMap/SimpleMap";
 import FeaturedSection from "../FeaturedSection/FeaturedSection";
 import DeliveryCard from "../DeliveryCard/DeliveryCard";
@@ -9,6 +11,7 @@ const Home = () => {
             <Helmet>
                 <title>Home</title>
             </Helmet>
+            <Banner></Banner>
             <FeaturedSection></FeaturedSection>
             <DeliveryCard></DeliveryCard>
             <div className="flex items-center justify-center mt-20">

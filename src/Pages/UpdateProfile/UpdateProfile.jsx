@@ -1,8 +1,9 @@
 import useAuth from "../useAuth/useAuth";
 import {getAuth, updateProfile} from "firebase/auth";
+import Lottie from "lottie-react";
 import {Helmet} from 'react-helmet';
 import {toast} from "sonner";
-
+import updateAnimation from "./update.json"
 // export default UpdateProfile;
 
 const UpdateProfile = () => {
@@ -42,63 +43,68 @@ const UpdateProfile = () => {
     }
 
     return (
-        <div className="mx-2">
+        <div className="mx-2 mt-20">
             <Helmet>
                 <title>Update Profile</title>
             </Helmet>
-            <div
-                className="w-full max-w-md p-8 border-2 space-y-5 rounded-xl dark:text-black mx-auto mt-20">
-                <h1 className="text-3xl font-bold dark:text-gray-600 text-center">Update Now!</h1>
-                <form onSubmit={handleUpdate} className="space-y-8 pt-5">
-                    
-                    <div>
-                        <label htmlFor="username" className="block dark:text-gray-600">
-                            Name
-                        </label>
-                        <input
-                            defaultValue={user
-                                ?.displayName}
-                            type="name"
-                            name="name"
-                            id="name"
-                            placeholder="Update your name"
-                            className="w-full outline-none px-3 py-2 border-b-2 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"/>
-                    </div>
-                    <div>
-                        <label htmlFor="username" className="block dark:text-gray-600">
-                            Email
-                        </label>
-                        <input
-                            defaultValue={user
-                                ?.email}
-                            readOnly="readOnly"
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="leroy@jenkins.com"
-                            className="w-full outline-none px-3 py-2 border-b-2 rounded-md dark:border-gray-300 dark:bg-gray-300 dark:text-gray-800 focus:dark:border-violet-600"/>
-                    </div>
-                    <div >
-                        <label htmlFor="username" className="block dark:text-gray-600">
-                            Image
-                        </label>
-                        <input
-                            defaultValue={user
-                                ?.photoURL}
-                            type="text"
-                            name="image"
-                            id="image"
-                            placeholder="Image URL"
-                            className="w-full outline-none border-b-2 px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"/>
-                    </div>
-                    <div className="space-y-2">
+            <div className="flex lg:flex-row flex-col justify-center items-center gap-10">
+                <div>
+                    <Lottie className="lg:w-[600px] w-80 mx-auto" animationData={updateAnimation} loop={true} />
+                </div>
+                <div
+                    className="w-full max-w-md p-8 border-2 space-y-5 rounded-xl dark:text-black">
+                    <h1 className="text-3xl font-bold dark:text-gray-600 text-center">Update Now!</h1>
+                    <form onSubmit={handleUpdate} className="space-y-8 pt-5">
+                        
                         <div>
-                            <button
-                                type="submit"
-                                className="w-full px-8 py-3 rounded-md bg-gradient-to-r from-[#21b75f] to-[#31386e] font-semibold border-2 dark:text-gray-50">Update Profile</button>
+                            <label htmlFor="username" className="block dark:text-gray-600">
+                                Name
+                            </label>
+                            <input
+                                defaultValue={user
+                                    ?.displayName}
+                                type="name"
+                                name="name"
+                                id="name"
+                                placeholder="Update your name"
+                                className="w-full outline-none px-3 py-2 border-b-2 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"/>
                         </div>
-                    </div>
-                </form>
+                        <div>
+                            <label htmlFor="username" className="block dark:text-gray-600">
+                                Email
+                            </label>
+                            <input
+                                defaultValue={user
+                                    ?.email}
+                                readOnly="readOnly"
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="leroy@jenkins.com"
+                                className="w-full outline-none px-3 py-2 border-b-2 rounded-md dark:border-gray-300 dark:bg-gray-300 dark:text-gray-800 focus:dark:border-violet-600"/>
+                        </div>
+                        <div >
+                            <label htmlFor="username" className="block dark:text-gray-600">
+                                Image
+                            </label>
+                            <input
+                                defaultValue={user
+                                    ?.photoURL}
+                                type="text"
+                                name="image"
+                                id="image"
+                                placeholder="Image URL"
+                                className="w-full outline-none border-b-2 px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"/>
+                        </div>
+                        <div className="space-y-2">
+                            <div>
+                                <button
+                                    type="submit"
+                                    className="w-full px-8 py-3 rounded-md bg-[#3A3C3F] font-semibold border-2 dark:text-gray-50">Update Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     );

@@ -32,7 +32,7 @@ const Header = () => {
         }
     }
     return (
-        <div className="navbar bg-white shadow-lg px-4 py-0 fixed z-30">
+        <div className="navbar bg-white shadow-lg px-4 py-0 ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,18 +51,18 @@ const Header = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 gap-10">
                         <Link
-                            className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#22B160] dark:border-[#22B160]"
+                            className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                             to="/">Home</Link>
                         <Link
-                            className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#22B160] dark:border-[#22B160]"
+                            className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                             to="/register">Register</Link>
                         <Link
-                            className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#22B160] dark:border-[#22B160]"
+                            className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                             to="/updateProfile">Update Profile</Link>
                         <li><Link to="/dashboard">
                             <button className="flex items-center gap-1">
-                                <FaShoppingCart className="text-[#249D62]"></FaShoppingCart>
-                                <div className="badge bg-gradient-to-r from-[#21b75f] to-[#31386e] text-white">Dashboard</div>
+                                <FaShoppingCart className="text-[#3A3C3F]"></FaShoppingCart>
+                                <div className="badge bg-[#3A3C3F] text-white">Dashboard</div>
                             </button>
                         </Link></li>
                     </ul>
@@ -70,7 +70,7 @@ const Header = () => {
                 <Link to="/">
                     <div className="flex justify-center -space-x-2  items-center">
                         <img className="w-20 h-20" src="https://i.ibb.co/ySCx18M/Blue-Delivery-Logo-removebg-preview.png" alt="" />
-                        <div className="bg-gradient-to-r from-[#03cdb5] to-[#C8143A] text-transparent bg-clip-text lg:flex hidden">
+                        <div className="bg-[#3A3C3F] text-transparent bg-clip-text lg:flex hidden">
                             <a className=" text-sm lg:text-xl font-extrabold">Parcelio</a>
                         </div>
                     </div>
@@ -79,18 +79,18 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 gap-10">
                     <Link
-                        className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#22B160] dark:border-[#22B160]"
+                        className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                         to="/">Home</Link>
                     <Link
-                        className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#22B160] dark:border-[#22B160]"
+                        className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                         to="/register">Register</Link>
                     <Link
-                        className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#22B160] dark:border-[#22B160]"
+                        className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                         to="/updateProfile">Update Profile</Link>
                     <li><Link to="/dashboard">
                         <button className="flex items-center gap-1">
-                            <FaShoppingCart className="text-[#249D62]"></FaShoppingCart>
-                            <div className="badge bg-gradient-to-r from-[#21b75f] to-[#31386e] text-white">Dashboard</div>
+                            <FaShoppingCart className="text-[#3A3C3F]"></FaShoppingCart>
+                            <div className="badge bg-[#3A3C3F] text-white">Dashboard</div>
                         </button>
                     </Link></li>
                 </ul>
@@ -105,7 +105,7 @@ const Header = () => {
                                 data-tooltip-place="left">
                                 <Tooltip id="my-tooltip"/>
                                 <img
-                                    className="w-10 h-10 rounded-full border-4 border-green-600"
+                                    className="w-10 h-10 rounded-full border-4 border-[#3A3C3F]"
                                     src={user.photoURL}
                                     alt=""
                                     onClick={() => setShowDropdown(!showDropdown)}/>
@@ -115,11 +115,11 @@ const Header = () => {
                                     ? "userDropDown showDropdown space-y-2"
                                     : "userDropDown"}>
                                 <h1 className="text-xl font-medium">Name:{user.displayName}</h1>
-                                <h1 className="font-medium">{user.email}</h1>
-                            </div>
-                            <button
+                                <Link className="px-3 py-1 bg-[#3A3C3F] rounded-full flex items-center -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] text-white dark:border-[#3A3C3F]" to="/dashboard">Dashboard</Link>
+                                <button
                                 onClick={handleSignOut}
-                                className="p-1 rounded  bg-gradient-to-r from-[#21b75f] to-[#31386e] text-white border-none">Logout</button>
+                                className="px-3 py-1 bg-[#3A3C3F] rounded-full text-white border-none">Logout</button>
+                            </div>
                         </div>
                     )
                     : (
@@ -127,7 +127,7 @@ const Header = () => {
                             <Link to="/login">
                                 <button
                                     onClick={logout}
-                                    className="btn bg-gradient-to-r from-[#21b75f] to-[#31386e] text-white border-none">
+                                    className="btn bg-[#3A3C3F] text-white border-none">
                                     Login
                                 </button>
                             </Link>

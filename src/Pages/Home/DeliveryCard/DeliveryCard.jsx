@@ -4,7 +4,7 @@ import { TypeAnimation } from "react-type-animation";
 const DeliveryCard = () => {
     return (
         <div>
-            <h1 className="font-bold text-center mt-40 lg:text-5xl text-3xl">
+            <h1 className="font-medium text-center mt-40 lg:text-5xl text-3xl">
                 <TypeAnimation
                     sequence={[
                         // Same substring at the start will only be typed out once, initially

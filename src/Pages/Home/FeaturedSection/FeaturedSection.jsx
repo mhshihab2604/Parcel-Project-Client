@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 const FeaturedSection = () => {
     return (
         <div>
-            <h1 className="font-bold text-center mt-20 lg:text-5xl text-3xl">
+            <h1 className="font-medium text-center lg:mt-20 mt-44 lg:text-5xl text-3xl">
                 <TypeAnimation
                     sequence={[
                         // Same substring at the start will only be typed out once, initially
@@ -22,8 +22,8 @@ const FeaturedSection = () => {
                     repeat={Infinity}
                     />
             </h1>
-             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 container mx-auto items-center justify-center mt-10">
-                <div className="shadow-xl">
+             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 container mx-auto items-center justify-center lg:mt-10 mt-5">
+                <div className="shadow-xl border-x-2 rounded">
                     <div className="flex w-auto h-52 items-center">
                         <div className="px-10 text-sky-400">
                             <GiReceiveMoney className="text-6xl " />
@@ -34,7 +34,7 @@ const FeaturedSection = () => {
                             <p className="text-base text-gray-700 font-medium">Select high-quality boxes and packaging materials to withstand transit.</p>
                         </div>
                     </div>
-                </div><div className="shadow-xl">
+                </div><div className="shadow-xl border-x-2 rounded">
                     <div className="flex w-auto h-52 items-center">
                         <div className="px-10">
                             <IoIosTimer className="text-6xl text-sky-400 " />
@@ -46,7 +46,7 @@ const FeaturedSection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="shadow-xl">
+                <div className="shadow-xl border-x-2 rounded">
                     <div className="flex w-auto h-52 items-center">
                         <div className="px-10">
                             <FaShippingFast className="text-5xl text-sky-400" />
