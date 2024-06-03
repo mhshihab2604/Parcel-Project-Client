@@ -23,7 +23,7 @@ const Register = () => {
         ?.state || "/";
 
     const onSubmit = data => {
-        const {email, password, image, name} = data
+        const {email, password, image, name, usersType} = data
 
         setRegisterError("");
         if (password.length < 6) {
@@ -38,7 +38,7 @@ const Register = () => {
         // create user and update profile
         createUser(email, password)
             .then(() => {
-                UpdateUserProfile(name, image).then(() => {
+                UpdateUserProfile(name, image, usersType).then(() => {
                     setRefetchUser(!refetchUser)
                     navigate(from);
                     Swal.fire(
@@ -88,14 +88,22 @@ const Register = () => {
                                     {...register("image", { required: true })}/>
                             </div>
                         </div>
-                        <div className="space-y-1 text-sm">
-                            <input
-                                type="text"
-                                name="email"
-                                id="username"
-                                placeholder="Email"
-                                className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-                                {...register("email", { required: true })}/> {errors.email && <span className="text-red-500">This field is required</span>}
+                        <div className="flex justify-center items-center gap-5 ">
+                            <div className="space-y-1 text-sm">
+                                <input
+                                    type="text"
+                                    name="email"
+                                    id="username"
+                                    placeholder="Email"
+                                    className="w-full border-b-2 outline-none px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
+                                    {...register("email", { required: true })}/> {errors.email && <span className="text-red-500">This field is required</span>}
+                            </div>
+                            <select name="usersType" id="usersType" placeholder="Users Type" className="select select-bordered w-full max-w-xs" {...register("usersType", { required: true })}>
+                                <option disabled selected>Who shot first?</option>
+                                <option>User</option>
+                                <option>Delivery Man</option>
+                            </select>
+                            {errors.usersType && <span className="text-red-500">This field is required</span>}
                         </div>
                         <div className="relative space-y-1 text-sm">
                             <input

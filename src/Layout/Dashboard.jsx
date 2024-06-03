@@ -1,14 +1,17 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import useRole from "../hooks/useRole";
+import UserMenu from "./MenuItem/UserMenu";
+import DeliveryMenu from "./MenuItem/DeliveryMenu";
+import AdminMenu from "./MenuItem/AdminMenu";
 
 const Dashboard = () => {
+    const [role] = useRole();
     return (
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex md:flex-row flex-col lg:flex-row">
             <div className="lg:w-64 w-full min-h-screen bg-[#FCF0E3] shadow-2xl p-5">
-                <ul className="menu p-4 text-black bg-white shadow-xl rounded-xl">
-                    <li><Link to="/"><a href="#" className="block py-2 px-4">Home</a></Link></li>
-                    <li><Link to="/"><a href="#" className="block py-2 px-4">Home</a></Link></li>
-                    <li><Link to="/"><a href="#" className="block py-2 px-4">Home</a></Link></li>
-                </ul>
+                {role === "user" && <UserMenu></UserMenu>}
+                {role === "deliveryMan" && <DeliveryMenu></DeliveryMenu>}
+                {role === "admin" && <AdminMenu></AdminMenu>}
             </div>
             
             <div className="flex-1 p-8 mx-2">

@@ -9,6 +9,10 @@ import UpdateProfile from "../Pages/UpdateProfile/UpdateProfile";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Profile from "../Pages/Dashboard/Profile/Profile";
+import BookParcel from "../Pages/Dashboard/UserDetails/BookParcel";
+import MyParcel from "../Pages/Dashboard/UserDetails/MyParcel/MyParcel";
+import UpdateParcel from '../Pages/Dashboard/UserDetails/MyParcel/UpdateParcel';
 
 export const router = createBrowserRouter([
     {
@@ -37,13 +41,31 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: "/dashboard",
+        path: "dashboard",
         element: <PrivateRoute>
             <Dashboard></Dashboard>
         </PrivateRoute>,
         children: [
             {
-                
+                path: "bookParcel",
+                element: <BookParcel></BookParcel>
+
+            },
+            {
+                path: "myParcel",
+                element: <MyParcel></MyParcel>
+
+            },
+            {
+                path: "updateParcel/:id",
+                element: <UpdateParcel></UpdateParcel>,
+                loader: ({params}) => fetch(`http://localhost:5000/parcel/g/${params.id}`)
+
+            },
+            {
+                path: "profile",
+                element: <Profile></Profile>
+
             }
         ]
     },

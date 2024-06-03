@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import useAuth from "../useAuth/useAuth";
 import {Tooltip} from 'react-tooltip'
 import { FaShoppingCart } from "react-icons/fa";
+import { IoNotifications } from "react-icons/io5";
 const Header = () => {
     const [theme, setTheme] = useState('light')
 
@@ -59,7 +60,7 @@ const Header = () => {
                         <Link
                             className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                             to="/updateProfile">Update Profile</Link>
-                        <li><Link to="/dashboard">
+                        <li><Link to="/dashboard/bookParcel">
                             <button className="flex items-center gap-1">
                                 <FaShoppingCart className="text-[#3A3C3F]"></FaShoppingCart>
                                 <div className="badge bg-[#3A3C3F] text-white">Dashboard</div>
@@ -87,7 +88,7 @@ const Header = () => {
                     <Link
                         className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                         to="/updateProfile">Update Profile</Link>
-                    <li><Link to="/dashboard">
+                    <li><Link to="/dashboard/bookParcel">
                         <button className="flex items-center gap-1">
                             <FaShoppingCart className="text-[#3A3C3F]"></FaShoppingCart>
                             <div className="badge bg-[#3A3C3F] text-white">Dashboard</div>
@@ -110,6 +111,7 @@ const Header = () => {
                                     alt=""
                                     onClick={() => setShowDropdown(!showDropdown)}/>
                             </div>
+                            <IoNotifications className="text-2xl"></IoNotifications>
                             <div
                                 className={showDropdown
                                     ? "userDropDown showDropdown space-y-2"
