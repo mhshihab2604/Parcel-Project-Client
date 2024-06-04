@@ -57,10 +57,10 @@ const Header = () => {
                         <Link
                             className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                             to="/register">Register</Link>
-                        <Link
+                        {/* <Link
                             className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
-                            to="/updateProfile">Update Profile</Link>
-                        <li><Link to="/dashboard/bookParcel">
+                            to="/updateProfile">Update Profile</Link> */}
+                        <li><Link to="/dashboard">
                             <button className="flex items-center gap-1">
                                 <FaShoppingCart className="text-[#3A3C3F]"></FaShoppingCart>
                                 <div className="badge bg-[#3A3C3F] text-white">Dashboard</div>
@@ -85,10 +85,10 @@ const Header = () => {
                     <Link
                         className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
                         to="/register">Register</Link>
-                    <Link
+                    {/* <Link
                         className="flex items-center px-4 -mb-1 hover:border-b-2 dark:border- hover:dark:text-[#3A3C3F] dark:border-[#3A3C3F]"
-                        to="/updateProfile">Update Profile</Link>
-                    <li><Link to="/dashboard/bookParcel">
+                        to="/updateProfile">Update Profile</Link> */}
+                    <li><Link to="/dashboard">
                         <button className="flex items-center gap-1">
                             <FaShoppingCart className="text-[#3A3C3F]"></FaShoppingCart>
                             <div className="badge bg-[#3A3C3F] text-white">Dashboard</div>

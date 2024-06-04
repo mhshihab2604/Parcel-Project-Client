@@ -13,6 +13,11 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
 import BookParcel from "../Pages/Dashboard/UserDetails/BookParcel";
 import MyParcel from "../Pages/Dashboard/UserDetails/MyParcel/MyParcel";
 import UpdateParcel from '../Pages/Dashboard/UserDetails/MyParcel/UpdateParcel';
+import AllUsers from "../Pages/Dashboard/AdminDetails/AllUsers/AllUsers";
+import AllParcel from "../Pages/Dashboard/AdminDetails/AllParcel/AllParcel";
+import MyDeliveryList from "../Pages/Dashboard/DeliveryDetails/MyDeliveryList/MyDeliveryList";
+import MyReviews from "../Pages/Dashboard/DeliveryDetails/MyReviews/MyReviews";
+import AllDeliveryMan from "../Pages/Dashboard/AdminDetails/AllDeliveryMan/AllDeliveryMan";
 
 export const router = createBrowserRouter([
     {
@@ -32,12 +37,7 @@ export const router = createBrowserRouter([
             path: '/login',
             element: <Login></Login>
             },
-            {
-            path: '/updateProfile',
-            element: <PrivateRoute>
-                <UpdateProfile></UpdateProfile>
-            </PrivateRoute>
-            },
+            
         ]
     },
     {
@@ -46,6 +46,7 @@ export const router = createBrowserRouter([
             <Dashboard></Dashboard>
         </PrivateRoute>,
         children: [
+            // Users Section
             {
                 path: "bookParcel",
                 element: <BookParcel></BookParcel>
@@ -66,7 +67,34 @@ export const router = createBrowserRouter([
                 path: "profile",
                 element: <Profile></Profile>
 
-            }
+            },
+            {
+                path: 'updateProfile',
+                element: <UpdateProfile></UpdateProfile>
+            },
+            // Admin Section
+            {
+                path: "allUsers",
+                element: <AllUsers></AllUsers>
+            },
+            {
+                path: "allParcel",
+                element: <AllParcel></AllParcel>
+            },
+            {
+                path: "allDeliveryMan",
+                element: <AllDeliveryMan></AllDeliveryMan>
+            },
+            // Delivery Section
+            {
+                path: "myDeliveryList",
+                element: <MyDeliveryList></MyDeliveryList>
+            },
+            {
+                path: "myReviews",
+                element: <MyReviews></MyReviews>
+            },
+
         ]
     },
 ]);

@@ -15,6 +15,12 @@ const DeliveryForm = () => {
     }, [setValue, user]);
 
     const handleSubmit = (e) => {
+        const months = [
+            "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+        ];
+        const bookingDate = new Date();
+        const formattedBookingDate = `${months[bookingDate.getMonth()]} ${String(bookingDate.getDate()).padStart(2, '0')}`;
+
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -41,8 +47,14 @@ const DeliveryForm = () => {
             deliveryDate,
             latitude,
             longitude,
-            price
+            price,
+            bookingDate: formattedBookingDate,
+            status: "pending",
+            approximateDate: "",
+            deliveryManId: ""
+
         }
+
         console.log(newParcel);
         // send data to the server
         fetch('http://localhost:5000/parcel', {

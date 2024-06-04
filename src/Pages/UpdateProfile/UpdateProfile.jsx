@@ -100,7 +100,7 @@ const UpdateProfile = () => {
                             <div>
                                 <button
                                     type="submit"
-                                    className="w-full px-8 py-3 rounded-md bg-[#3A3C3F] font-semibold border-2 dark:text-gray-50">Update Profile</button>
+                                    className="w-full px-8 py-3 rounded-md bg-[#D1A054] font-semibold border-2 dark:text-gray-50">Update Profile</button>
                             </div>
                         </div>
                     </form>
@@ -111,4 +111,3 @@ const UpdateProfile = () => {
 };
 
 export default UpdateProfile;
-

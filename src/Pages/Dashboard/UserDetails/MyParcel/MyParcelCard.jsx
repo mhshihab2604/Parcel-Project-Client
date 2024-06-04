@@ -1,8 +1,8 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MyParcelCard = ({parcel, parcels, setParcels}) => {
-    const {_id, parcelType, deliveryDate} = parcel || {};
+const MyParcelCard = ({ parcel, fetchParcels }) => {
+    const { _id, parcelType, deliveryDate, bookingDate } = parcel || {};
 
     const handleDelete = _id => {
         Swal
@@ -17,17 +17,14 @@ const MyParcelCard = ({parcel, parcels, setParcels}) => {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/parcel/${_id}`, {method: 'DELETE'})
-                        .then(
-                            res => res.json()
-                        )
+                    fetch(`http://localhost:5000/parcel/${_id}`, { method: 'DELETE' })
+                        .then(res => res.json())
                         .then(data => {
                             if (data.deletedCount > 0) {
                                 Swal.fire(
-                                    {title: "Deleted!", text: "Your Post has been deleted.", icon: "success"}
+                                    { title: "Deleted!", text: "Your Post has been deleted.", icon: "success" }
                                 );
-                                const remaining = parcels.filter(parc => parc._id !== _id);
-                                setParcels(remaining);
+                                fetchParcels();  // Refetch parcels after delete
                             }
                         });
                 }
@@ -38,8 +35,9 @@ const MyParcelCard = ({parcel, parcels, setParcels}) => {
         <div className="overflow-x-auto">
             <table className="min-w-[90%] shadow-md border mx-auto border-gray-100 my-6">
                 <thead>
-                    <tr className="bg-[#3A3C3F] text-white">
+                    <tr className="bg-[#FCF0E3] text-black">
                         <th className="py-3 px-6 text-left border-b">Parcel Type</th>
+                        <th className="py-3 px-6 text-left border-b">Booking Date</th>
                         <th className="py-3 px-6 text-left border-b">Delivery Date</th>
                         <th className="py-3 px-6 border-b text-left">Update</th>
                         <th className="py-3 px-6 border-b text-left">Delete</th>
@@ -48,16 +46,17 @@ const MyParcelCard = ({parcel, parcels, setParcels}) => {
                 <tbody>
                     <tr className="hover:bg-gray-50 transition duration-300">
                         <td className="py-4 px-6 border-b">{parcelType}</td>
+                        <td className="py-4 px-6 border-b">{bookingDate}</td>
                         <td className="py-4 px-6 border-b">{deliveryDate}</td>
                         <td className="py-4 px-6 border-b">
                             <Link to={`/dashboard/updateParcel/${_id}`}>
-                                <button className="btn-xs bg-[#3A3C3F] rounded-full text-white">Update</button>
+                                <button className="btn-xs bg-[#D1A054] rounded-full text-white">Update</button>
                             </Link>
                         </td>
                         <td className="py-4 px-6 border-b">
                             <button
                                 onClick={() => handleDelete(_id)}
-                                className="btn-xs bg-[#3A3C3F] rounded-full text-white">Delete</button>
+                                className="btn-xs bg-[#D1A054] rounded-full text-white">Delete</button>
                         </td>
                     </tr>
                 </tbody>
@@ -67,3 +66,4 @@ const MyParcelCard = ({parcel, parcels, setParcels}) => {
 };
 
 export default MyParcelCard;
+

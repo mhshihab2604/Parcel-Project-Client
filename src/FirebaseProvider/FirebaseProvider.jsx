@@ -41,15 +41,19 @@ const FirebaseProvider = ({ children }) => {
         });
     };
 
-    const saveUser = async (user) => {
+    async function  saveUser (user)  {
         const currentUser = {
             email: user?.email,
+            name: user?.name,
+            image: user?.image,
+            phoneNumber: user?.phoneNumber,
             role: 'user',
             status: 'Verified',
         };
         const { data } = await axios.put(`http://localhost:5000/users`, currentUser); // Corrected URL
         return data;
-    };
+    }
+
 
     // google login
     const googleLogin = () => {
@@ -67,9 +71,7 @@ const FirebaseProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setUser(user);
-            if (user) {
-                saveUser(user);
-            }
+            
             setLoader(false);
         });
         return () => unsubscribe();
@@ -85,7 +87,8 @@ const FirebaseProvider = ({ children }) => {
         refetchUser,
         setRefetchUser,
         loader,
-        setLoader
+        setLoader,
+        saveUser
     };
 
     return (
