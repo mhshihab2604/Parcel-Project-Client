@@ -5,7 +5,7 @@ import Lottie from "lottie-react";
 const Banner = () => {
     return (
         <div>
-            <div className="hero h-[700px] bg-base-200">
+            <div className="hero h-[700px] bg-[#3A3C3F] text-white rounded-xl mt-10">
                 <div className="grid lg:grid-cols-2 grid-cols-1 lg:gap-20 gap-10 items-center pt-10">
                     <Lottie className="lg:w-[600px] w-80 mx-auto" animationData={animation} loop={true} />
                     <div className="text-center lg:text-start">
