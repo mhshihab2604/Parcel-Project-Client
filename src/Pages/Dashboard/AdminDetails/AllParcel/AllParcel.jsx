@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import "react-datepicker/dist/react-datepicker.css";
+
 const AllParcel = () => {
     const axiosSecure = useAxiosSecure();
     const queryClient = useQueryClient();
@@ -92,7 +93,6 @@ const AllParcel = () => {
             </div>
             <div className="overflow-x-auto text-xl">
                 <table className="table">
-                    
                     <thead>
                         <tr className="bg-[#FCF0E3] text-black">
                             <th>No.</th>
@@ -118,7 +118,15 @@ const AllParcel = () => {
                                     <button className="btn lg:btn-xs bg-[#D1A054] rounded-3xl text-white">{parcel.status}</button>
                                 </td>
                                 <td>
-                                    <button onClick={() => openModal(parcel._id)} className="btn-xs bg-[#D1A054] rounded-full font-medium text-white">
+                                    <button
+                                        onClick={() => openModal(parcel._id)}
+                                        className={`btn-xs rounded-full font-medium text-white ${
+                                            (parcel.status === 'On The Way' || parcel.status === 'Delivered')
+                                                ? 'bg-gray-400 cursor-not-allowed'
+                                                : 'bg-[#D1A054]'
+                                        }`}
+                                        disabled={parcel.status === 'On The Way' || parcel.status === 'Delivered'}
+                                    >
                                         Manage
                                     </button>
                                 </td>
@@ -127,7 +135,7 @@ const AllParcel = () => {
                     </tbody>
                 </table>
             </div>
-            
+
             {showModal && (
                 <div className="w-full h-full fixed top-0 left-0 z-[999999] bg-[#3e3e3e9c] flex justify-center items-center">
                     <div className="lg:w-[500px] w-auto p-4 rounded-lg shadow-slate-950 shadow-2xl bg-[#FCF0E3]">

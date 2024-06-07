@@ -1,34 +1,44 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../../useAuth/useAuth";
 
 const MyParcelCard = ({ parcel, fetchParcels }) => {
-    const { _id, parcelType, deliveryDate, bookingDate } = parcel || {};
+    const { parcelType, deliveryDate, bookingDate, status } = parcel || {};
+    const axiosSecure = useAxiosSecure();
+    const { user } = useAuth();
+    const { data: parcels = [] } = useQuery({
+        queryKey: ['parcels'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/parcel/${user.email}`);
+            return res.data;
+        }
+    });
 
     const handleDelete = _id => {
-        Swal
-            .fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/parcel/${_id}`, { method: 'DELETE' })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.deletedCount > 0) {
-                                Swal.fire(
-                                    { title: "Deleted!", text: "Your Post has been deleted.", icon: "success" }
-                                );
-                                fetchParcels();  // Refetch parcels after delete
-                            }
-                        });
-                }
-            });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/parcel/${_id}`, { method: 'DELETE' })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                { title: "Deleted!", text: "Your parcel has been deleted.", icon: "success" }
+                            );
+                            fetchParcels();  // Refetch parcels after delete
+                        }
+                    });
+            }
+        });
     };
 
     return (
@@ -49,14 +59,23 @@ const MyParcelCard = ({ parcel, fetchParcels }) => {
                         <td className="py-4 px-6 border-b">{bookingDate}</td>
                         <td className="py-4 px-6 border-b">{deliveryDate}</td>
                         <td className="py-4 px-6 border-b">
-                            <Link to={`/dashboard/updateParcel/${_id}`}>
-                                <button className="btn-xs bg-[#D1A054] rounded-full text-white">Update</button>
+                            <Link to={`/dashboard/updateParcel/${parcels._id}`}>
+                                <button
+                                    className={`btn-xs rounded-full text-white ${status === 'On The Way' ? 'bg-gray-400' : 'bg-[#D1A054]'}`}
+                                    disabled={status === 'On The Way'}
+                                >
+                                    Update
+                                </button>
                             </Link>
                         </td>
                         <td className="py-4 px-6 border-b">
                             <button
-                                onClick={() => handleDelete(_id)}
-                                className="btn-xs bg-[#D1A054] rounded-full text-white">Delete</button>
+                                onClick={() => handleDelete(parcels._id)}
+                                className={`btn-xs rounded-full text-white ${status === 'On The Way' ? 'bg-gray-400' : 'bg-[#D1A054]'}`}
+                                disabled={status === 'On The Way'}
+                            >
+                                Delete
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -66,4 +85,3 @@ const MyParcelCard = ({ parcel, fetchParcels }) => {
 };
 
 export default MyParcelCard;
-

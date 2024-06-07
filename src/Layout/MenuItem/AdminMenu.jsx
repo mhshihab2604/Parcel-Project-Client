@@ -4,6 +4,8 @@ import { GrDeliver } from "react-icons/gr";
 import { FaUsers } from "react-icons/fa";
 import { GrUserWorker } from "react-icons/gr";
 import { FaHome } from "react-icons/fa";
+import { SiStatista } from "react-icons/si";
+
 const AdminMenu = () => {
     return (
         <div>
@@ -26,6 +28,9 @@ const AdminMenu = () => {
                 <div className="flex items-center gap-2">
                     <GrUserWorker className="text-2xl"></GrUserWorker><MenuItem label='All Delivery Men' address='allDeliveryMan' />
                 </div>
+                <div className="flex items-center gap-2">
+                    <SiStatista className="text-xl"></SiStatista><MenuItem label='Statistic' address='statistic' />
+                </div>
             </div>
             <hr/>
             <Link to="/">
@@ -38,3 +43,4 @@ const AdminMenu = () => {
 };
 
 export default AdminMenu;
+
