@@ -10,7 +10,7 @@ const Footer = () => {
                             href="#"
                             className="flex justify-center items-center space-x-3 lg:justify-start">
                             <div
-                                className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-gradient-to-r from-[#21b75f] to-[#31386e]">
+                                className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-[#D9B070]">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 32 32"
@@ -21,15 +21,15 @@ const Footer = () => {
                                 </svg>
                             </div>
                             <span
-                                className="bg-gradient-to-r from-[#21b75f] to-[#616ed2] text-transparent bg-clip-text">
-                                <a className=" text-sm lg:text-2xl font-extrabold">Colorful</a>
+                                className="bg-[#FCF0E3] text-transparent bg-clip-text">
+                                <a className=" text-sm lg:text-2xl font-extrabold">Parcelio</a>
                             </span>
                         </a>
                     </div>
                     <div
                         className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
                         <div className="space-y-3">
-                            <h3 className="tracking-wide uppercase dark:text-gray-500 font-semibold">Product</h3>
+                            <h3 className="tracking-wide uppercase dark:text-gray-500 font-semibold">Home</h3>
                             <ul className="space-y-1">
                                 <li>
                                     <a rel="noopener noreferrer" href="#">Features</a>
@@ -46,7 +46,7 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <h3 className="tracking-wide uppercase dark:text-gray-500 font-semibold">Company</h3>
+                            <h3 className="tracking-wide uppercase dark:text-gray-500 font-semibold">Admin</h3>
                             <ul className="space-y-1">
                                 <li>
                                     <a rel="noopener noreferrer" href="#">Privacy</a>
@@ -57,7 +57,7 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <h3 className="uppercase dark:text-gray-500 font-semibold">Developers</h3>
+                            <h3 className="uppercase dark:text-gray-500 font-semibold">Delivery Man</h3>
                             <ul className="space-y-1">
                                 <li>
                                     <a rel="noopener noreferrer" href="#">Public API</a>
@@ -71,7 +71,7 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div className="space-y-3">
-                            <div className="uppercase dark:text-gray-500 font-semibold">Social media</div>
+                            <div className="uppercase dark:text-gray-500 font-semibold">Users</div>
                             <div className="flex justify-start space-x-3">
                                 <a
                                     rel="noopener noreferrer"

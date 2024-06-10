@@ -19,6 +19,9 @@ import MyDeliveryList from "../Pages/Dashboard/DeliveryDetails/MyDeliveryList/My
 import MyReviews from "../Pages/Dashboard/DeliveryDetails/MyReviews/MyReviews";
 import AllDeliveryMan from "../Pages/Dashboard/AdminDetails/AllDeliveryMan/AllDeliveryMan";
 import Statistic from "../Pages/Dashboard/AdminDetails/Statistic/Statistic";
+import ReviewModal from "../Pages/Dashboard/UserDetails/MyParcel/ReviewModal";
+import Payment from "../Pages/Dashboard/UserDetails/MyParcel/Payment/Payment";
+import PaymentSuccess from "../Pages/Dashboard/UserDetails/MyParcel/Payment/PaymentSuccess";
 
 export const router = createBrowserRouter([
     {
@@ -62,7 +65,6 @@ export const router = createBrowserRouter([
                 path: "updateParcel/:id",
                 element: <UpdateParcel></UpdateParcel>,
                 loader: ({params}) => fetch(`http://localhost:5000/parcel/g/${params.id}`)
-
             },
             {
                 path: "profile",
@@ -99,6 +101,20 @@ export const router = createBrowserRouter([
                 path: "myReviews",
                 element: <MyReviews></MyReviews>
             },
+            {
+                path: "reviews/:id",
+                element: <ReviewModal></ReviewModal>,
+                loader: ({params}) => fetch(`http://localhost:5000/parcel/g/${params.id}`)
+            },
+            {
+                path: "payment/:id",
+                element: <Payment></Payment>
+            },
+            {
+                path: "paymentSuccess",
+                element: <PaymentSuccess></PaymentSuccess>
+            },
+            
 
         ]
     },

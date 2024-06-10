@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const DeliveryCard = () => {
     const axiosSecure = useAxiosSecure();
+    
     const { data: delivery = [] } = useQuery({
         queryKey: ['delivery'],
         queryFn: async () => {
@@ -13,6 +14,33 @@ const DeliveryCard = () => {
             return res.data;
         }
     });
+
+    const { data: parcels = [] } = useQuery({
+        queryKey: ['parcels'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/parcel');
+            return res.data;
+        }
+    });
+
+    const { data: reviews = [] } = useQuery({
+        queryKey: ['reviews'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/reviews`);
+            return res.data;
+        },
+    });
+
+    const deliveredCounts = delivery.map(deliver => {
+        const count = parcels.filter(parcel => parcel.status === 'Delivered' && parcel.deliveryManId === deliver._id).length;
+        return { ...deliver, deliveredCount: count };
+    });
+
+    const calculateAverageRating = (deliveryManId) => {
+        const deliveryManReviews = reviews.filter(review => review.deliveryMenId === deliveryManId);
+        const totalRating = deliveryManReviews.reduce((sum, review) => sum + parseFloat(review.rating), 0);
+        return deliveryManReviews.length > 0 ? totalRating / deliveryManReviews.length : 0;
+    };
 
     return (
         <div>
@@ -33,8 +61,8 @@ const DeliveryCard = () => {
                 />
             </h1>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-20 mt-10 max-w-5xl mx-auto">
-                {delivery.map((item) => (
-                    <div key={item.id} className="card border-2 rounded-none">
+                {deliveredCounts.slice(0, 3).map((item) => (
+                    <div key={item._id} className="card border-2 rounded-none">
                         <figure><img src={item.image} alt="Delivery Man" /></figure>
                         <div className="space-y-2">
                             <div className="p-4 space-y-2">
@@ -47,11 +75,12 @@ const DeliveryCard = () => {
                             <hr />
                             <div className="flex p-4 font-extrabold justify-between items-center">
                                 <h1 className="flex justify-center items-center gap-2">
-                                    <TbTruckDelivery className="text-xl" /> 200$
+                                    <TbTruckDelivery className="text-xl" />Delivered: {item.deliveredCount}
                                 </h1>
+                                
                                 <div className="rating rating-sm flex justify-center items-center gap-2">
-                                    <input type="radio" name={`rating-${item.id}`} className="mask mask-star-2 bg-orange-400" />
-                                    <h1>200$</h1>
+                                    <input type="radio" name={`rating-${item._id}`} className="mask mask-star-2 bg-orange-400" />
+                                    <h1>{calculateAverageRating(item._id).toFixed(1)}</h1>
                                 </div>
                             </div>
                         </div>

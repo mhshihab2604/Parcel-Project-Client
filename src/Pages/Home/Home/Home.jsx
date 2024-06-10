@@ -5,6 +5,10 @@ import SimpleMap from "../SimpleMap/SimpleMap";
 import FeaturedSection from "../FeaturedSection/FeaturedSection";
 import DeliveryCard from "../DeliveryCard/DeliveryCard";
 
+import { FaShippingFast } from "react-icons/fa";
+import { GiReceiveMoney } from "react-icons/gi";
+import { IoIosTimer } from "react-icons/io";
+
 const Home = () => {
     return (
         <div>
@@ -12,56 +16,57 @@ const Home = () => {
                 <title>Home</title>
             </Helmet>
             <Banner></Banner>
-            <FeaturedSection></FeaturedSection>
-            <DeliveryCard></DeliveryCard>
-            <div className="flex items-center justify-center mt-20">
-                <div className="stats shadow bg-cover bg-center bg-no-repeat relative"
-                    style={{ backgroundImage: 'url("https://i.ibb.co/sKsjqMW/Banner-Image.jpg")'}}>
-                    <div className="absolute inset-0 bg-black opacity-50"></div>
-                    <div className="relative stat">
-                        <div className="stat-figure text-[#FCA22A]">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
+             
+            <div className="grid w-96 ml-5 md:w-auto lg:w-auto  grid-cols-1 my-[130px] md:grid-cols-2 lg:grid-cols-3 gap-5 md:container lg:container md:mx-auto lg:mx-auto items-center justify-center">
+                <div className="shadow-2xl rounded-2xl">
+                    <div className="flex w-auto h-52 items-center">
+                        <div className="px-10 text-[#D1A054]">
+                            <GiReceiveMoney className="text-6xl " />
                         </div>
-                        <div className="stat-title text-white">Total Likes</div>
-                        <a className="stat-value text-sm lg:text-4xl font-extrabold text-white">25.6K</a>
-                        <div className="stat-desc font-semibold text-lg text-[#FCA22A]">21% more than last month</div>
+                        <div className="divider lg:divider-horizontal"></div>
+                        <div>
+                            <h1 className="text-3xl font-bold">Transparent Pricing</h1>
+                            <p className="text-base text-gray-700 font-medium">Know the exact costs upfront with clear pricing policies.</p>
+                        </div>
                     </div>
-
-                    <div className="relative stat">
-                        <div className="stat-figure text-[#22B060]">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
+                </div>
+                <div className="shadow-2xl rounded-2xl">
+                    <div className="flex w-auto h-52 items-center">
+                        <div className="px-10">
+                            <IoIosTimer className="text-6xl text-[#D1A054] " />
                         </div>
-                        <div className="stat-title text-white">Page Views</div>
-                        <a className="stat-value text-sm lg:text-4xl font-extrabold text-white">2.6M</a>
-                        <div className="stat-desc font-semibold text-lg text-[#FCA22A]">21% more than last month</div>
+                        <div className="divider lg:divider-horizontal"></div>
+                        <div>
+                            <h1 className="text-3xl  font-bold">Round-the-Clock Tracking</h1>
+                            <p className="text-base text-gray-700 font-medium">Track parcels 24/7 to stay updated on their status and location.</p>
+                        </div>
                     </div>
-
-                    <div className="relative stat">
-                        <div className="stat-figure text-secondary">
-                            <div className="avatar online">
-                                <div className="w-16 rounded-full border-4 border-[#FCA22A]">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                </div>
-                            </div>
+                </div>
+                <div className="shadow-2xl rounded-2xl">
+                    <div className="flex w-auto h-52 items-center">
+                        <div className=" px-10">
+                            <FaShippingFast className="text-5xl text-[#D1A054]" />
                         </div>
-                        <a className="stat-value text-sm lg:text-4xl font-extrabold text-white">86%</a>
-                        <div className="stat-title">Tasks done</div>
-                        <div className="stat-desc font-semibold text-lg text-[#FCA22A]">31 tasks remaining</div>
+                        <div className="divider lg:divider-horizontal"></div>
+                        <div>
+                            <h1 className="text-3xl font-bold">Express Delivery</h1>
+                            <p className="text-base text-gray-700 font-medium">Get parcels delivered swiftly with our express delivery service.</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="mt-20">
+            <FeaturedSection></FeaturedSection>
+            <DeliveryCard></DeliveryCard>
+
+            <div className="mt-40">
                 <div className="text-center">
                     <h1 className="lg:text-3xl text-xl">We Are Available For You 24/7</h1>
                     <small>OUR ONLINE SUsmallPORT SERVICE IS ALWAYS 24 HOURS</small>
                 </div>
                 <SimpleMap />
             </div>
+
         </div>
     );
 };

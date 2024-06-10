@@ -10,10 +10,10 @@ const SimpleMap = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
             </div>
-            <div className="lg:ml-6 text-center">
-                <h1 className="text-xl lg:text-2xl font-bold mb-2">ShiHab</h1>
+            <div className="lg:ml-6 text-center shadow-2xl p-5">
+                <h1 className="text-xl lg:text-2xl font-bold mb-2">Track Your Parcels with Parcelio</h1>
                 <p className="text-sm lg:text-base">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Deleniti maiores quaerat assumenda ab fuga, delectus nulla eos! Enim, laborum nemo?
+                    Keep updated on the status and location of your parcels, ensuring timely delivery and peace of mind. <br /> Experience hassle-free parcel management with ShiHab, providing you with real-time tracking and notifications.
                 </p>
             </div>
         </div>

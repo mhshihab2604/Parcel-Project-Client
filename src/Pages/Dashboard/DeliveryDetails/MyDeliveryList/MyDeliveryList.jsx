@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAuth from "../../../useAuth/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
-
 const MyDeliveryList = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth(); // Assuming you have a context that provides the logged-in user's info
@@ -57,7 +56,6 @@ const MyDeliveryList = () => {
                         <th className="py-3 px-6 text-left border-b">Approximate Delivery Date</th>
                         <th className="py-3 px-6 text-left border-b">Receivers Phone Number</th>
                         <th className="py-3 px-6 text-left border-b">Receivers Address</th>
-                        <th className="py-3 px-6 text-left border-b">View Location</th>
                         <th className="py-3 px-6 text-left border-b">Cancel</th>
                         <th className="py-3 px-6 text-left border-b">Deliver</th>
                     </tr>
@@ -72,16 +70,6 @@ const MyDeliveryList = () => {
                             <td className="py-4 px-6 border-b">{parcel.approximateDate}</td>
                             <td className="py-4 px-6 border-b">{parcel.receiverPhoneNumber}</td>
                             <td className="py-4 px-6 border-b">{parcel.deliveryAddress}</td>
-                            <td className="py-4 px-6 border-b">
-                                <a
-                                    href={parcel.location}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="btn btn-sm bg-[#E0BA88] text-white"
-                                >
-                                    Location
-                                </a>
-                            </td>
                             <td className="py-4 px-6 border-b">
                                 <button 
                                     onClick={() => handleUpdateStatus(parcel._id, 'pending')} 
