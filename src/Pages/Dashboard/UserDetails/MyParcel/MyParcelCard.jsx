@@ -26,7 +26,7 @@ const MyParcelCard = ({ parcel, fetchParcels }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/parcel/${_id}`, { method: 'DELETE' })
+                fetch(`https://full-stack-project-server-side.vercel.app/parcel/${_id}`, { method: 'DELETE' })
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount > 0) {

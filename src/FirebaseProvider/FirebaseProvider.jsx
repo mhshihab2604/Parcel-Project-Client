@@ -50,7 +50,7 @@ const FirebaseProvider = ({ children }) => {
             role: 'user',
             status: 'Verified',
         };
-        const { data } = await axios.put(`http://localhost:5000/users`, currentUser); // Corrected URL
+        const { data } = await axios.put(`https://full-stack-project-server-side.vercel.app/users`, currentUser); // Corrected URL
         return data;
     }
 
@@ -70,8 +70,11 @@ const FirebaseProvider = ({ children }) => {
     // observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-            
+            // setUser(user);
+            if(user){
+                setUser(user)
+                setLoader(false)
+            }
             setLoader(false);
         });
         return () => unsubscribe();

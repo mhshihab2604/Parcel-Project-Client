@@ -57,7 +57,7 @@ const DeliveryForm = () => {
 
         console.log(newParcel);
         // send data to the server
-        fetch('http://localhost:5000/parcel', {
+        fetch('https://full-stack-project-server-side.vercel.app/parcel', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

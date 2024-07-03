@@ -9,8 +9,10 @@
 - [@mhshihab2604]()
 
 ## Live Links
-- Live Link: ()
+- Live Link: (https://full-stack-project-785ad.web.app/)
 
+## Server Side Links
+- Server Link: (https://github.com/mhshihab2604/Parcel-Project-Server)
 
 ### Technology used in this project
 

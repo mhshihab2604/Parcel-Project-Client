@@ -58,7 +58,7 @@ const AllParcel = () => {
         }
 
         try {
-            const res = await fetch(`http://localhost:5000/parcel/u/${selectedParcelId}`, {
+            const res = await fetch(`https://full-stack-project-server-side.vercel.app/parcel/u/${selectedParcelId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

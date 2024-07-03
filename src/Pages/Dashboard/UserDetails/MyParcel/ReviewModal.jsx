@@ -40,7 +40,7 @@ const ReviewModal = () => {
 
         console.log(givingReview);
         // Send data to the server
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://full-stack-project-server-side.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

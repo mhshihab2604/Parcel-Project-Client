@@ -8,7 +8,7 @@ const MyParcel = () => {
     const { user } = useAuth();
 
     const fetchParcels = () => {
-        fetch(`http://localhost:5000/parcel/${user.email}`)
+        fetch(`https://full-stack-project-server-side.vercel.app/parcel/${user.email}`)
             .then(res => res.json())
             .then(data => setParcels(data));
     };
